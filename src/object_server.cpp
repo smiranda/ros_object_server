@@ -1,5 +1,10 @@
 #include <object_server/object_server.hpp>
 
+struct Oracle {
+private:
+  void Observe();  
+}
+
 ObjectServer::ObjectServer() : do_update_(true), nh_("~")
 {
   if (!init())
