@@ -1,9 +1,15 @@
+#include <memory>
 #include <object_server/object_server.hpp>
+
+struct IDestructable {
+  ~IDestructable() = 0;
+};
 
 struct Oracle {
 private:
-  void Observe();  
-}
+  void Observe();
+  std::unique_ptr<IDestructable> opaque_store_;
+};
 
 ObjectServer::ObjectServer() : do_update_(true), nh_("~")
 {
